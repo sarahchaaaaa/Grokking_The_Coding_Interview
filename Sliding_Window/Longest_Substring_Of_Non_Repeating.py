@@ -11,12 +11,10 @@ class Solution:
         currSub = ""
         maxCount = 0
         for count, letter in enumerate(s):
-            if letter not in currSub:
-                seenNum[letter] = count #{a:0, b:1}
-                currSub += letter #ab
-            else:
-                currSub = s[seenNum[letter] + 1:count] + letter #b
-                seenNum[letter] = count # {a:0, b:2}
-            maxCount = max(len(currSub), maxCount) #123
-        
+            if letter in currSub:
+                currSub = s[seenNum[letter] + 1:count] 
+            currSub += letter 
+            seenNum[letter] = count 
+            maxCount = max(len(currSub), maxCount) 
+            
         return maxCount
